@@ -1,0 +1,32 @@
+.nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > a {
+    font-size: 26px;
+    text-decoration: none;
+  }
+}
+
+.header {
+    --group-justify: flex-end;
+    > a {
+        font-size: 26px;
+        text-decoration: none;
+      }
+}
+
+
+.control {
+  display: block;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+  font-weight: 500;
+
+  &:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  }
+}

@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import '@mantine/core/styles.css';
 import { AppShell, Burger, Group, MantineProvider } from '@mantine/core';
-import './App.css';
+import classes from './App.module.css';
 import { BrowserRouter, Link, Router } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
-import Navbar from './components/common/Navbar';
 import { useDisclosure } from '@mantine/hooks';
 
 function App() {
@@ -21,18 +19,18 @@ function App() {
       <AppShell.Header>
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Group justify="space-between" style={{ flex: 1 }}>
-            <Group ml="xl" gap={0} visibleFrom="sm">
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/contact">Contact</Link>
+            <Group justify='flex-end' style={{ flex: 1}}>
+              <Group ml="xl" gap={40} visibleFrom="sm" className={classes.header}>
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+              </Group>
             </Group>
-          </Group>
         </Group>
       </AppShell.Header>
 
       <AppShell.Navbar py="md" px={4}>
-        <Group>
+        <Group className={classes.nav}>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
