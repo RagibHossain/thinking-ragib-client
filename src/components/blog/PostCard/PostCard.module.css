@@ -1,0 +1,69 @@
+.card {
+  cursor: pointer;
+  height: 100%;
+  transition: all 0.2s ease;
+  border-color: #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e9ecef;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(14, 41, 84, 0.1);
+  border-color: #2E8A99;
+}
+
+.cardContent {
+  height: 100%;
+  gap: 1rem;
+}
+
+
+.tagsGroup {
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #f8f9fa;
+  color: #0E2954;
+  border: 1px solid #e9ecef;
+  font-size: 0.875rem;
+}
+
+.title {
+  color: #0E2954;
+  line-height: 1.3;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.excerpt {
+  line-height: 1.6;
+  flex: 1;
+  color: #495057;
+  font-size: 1rem;
+}
+
+.metaContainer {
+  margin-top: auto;
+  gap: 2rem;
+}
+
+.metaGroup {
+  gap: 0.5rem;
+}
+
+
+.metaText {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.metaIcon {
+  color: #2E8A99;
+  width: 16px;
+  height: 16px;
+}

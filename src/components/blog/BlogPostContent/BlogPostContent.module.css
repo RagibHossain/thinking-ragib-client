@@ -1,0 +1,17 @@
+
+
+.container {
+  max-width: 42rem;
+  padding-bottom: 2rem;
+}
+
+.contentStack {
+  gap: 1.5rem;
+}
+
+.paragraph {
+  color: #343a40;
+  line-height: 1.7;
+  font-size: 1.125rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}

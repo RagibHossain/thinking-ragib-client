@@ -1,0 +1,79 @@
+
+
+.container {
+  max-width: 42rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.contentStack {
+  gap: 2rem;
+}
+
+.backButton {
+  align-self: flex-start;
+  color: #2E8A99;
+  background: transparent;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.backIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.tagsGroup {
+  gap: 0.5rem;
+}
+
+
+.tag {
+  background-color: #f8f9fa;
+  color: #0E2954;
+  border: 1px solid #e9ecef;
+  font-size: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0E2954;
+  line-height: 1.2;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.excerpt {
+  color: #6c757d;
+  line-height: 1.6;
+  font-size: 1.25rem;
+  max-width: 800px;
+}
+
+.metaContainer {
+  gap: 2rem;
+}
+
+.metaGroup {
+  gap: 0.5rem;
+}
+
+
+
+.metaText {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.metaIcon {
+  color: #2E8A99;
+  width: 18px;
+  height: 18px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e9ecef;
+  margin: 2rem 0;
+}

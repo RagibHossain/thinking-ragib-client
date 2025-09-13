@@ -1,23 +1,18 @@
 import React from 'react';
 import { Container, Text, Stack } from '@mantine/core';
+import classes from './BlogPostContent.module.css';
 
 const BlogPostContent = ({ content }) => {
   // Split content into paragraphs for better formatting
   const paragraphs = content ? content.split('\n\n') : [];
 
   return (
-    <Container size="md" pb="xl">
-      <Stack spacing="lg">
+    <Container className={classes.container}>
+      <Stack className={classes.contentStack}>
         {paragraphs.map((paragraph, index) => (
           <Text
             key={index}
-            size="lg"
-            style={{
-              color: '#343a40',
-              lineHeight: 1.7,
-              fontSize: '1.125rem',
-              fontFamily: 'system-ui, -apple-system, sans-serif'
-            }}
+            className={classes.paragraph}
           >
             {paragraph}
           </Text>

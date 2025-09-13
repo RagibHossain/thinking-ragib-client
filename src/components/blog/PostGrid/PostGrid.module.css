@@ -1,0 +1,94 @@
+
+.container {
+  max-width: 80rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.loadingContainer {
+  min-height: 200px;
+}
+
+.loadingStack {
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.loadingText {
+  color: #6c757d;
+}
+
+.loader {
+  color: #2E8A99;
+  width: 2rem;
+  height: 2rem;
+}
+
+.emptyContainer {
+  min-height: 200px;
+}
+
+.emptyStack {
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.emptyTitle {
+  color: #6c757d;
+  font-size: 1.25rem;
+}
+
+.emptySubtitle {
+  color: #adb5bd;
+  font-size: 1rem;
+}
+
+
+.contentStack {
+  gap: 2rem;
+}
+
+.headerStack {
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.title {
+  color: #0E2954;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #6c757d;
+  text-align: center;
+  max-width: 600px;
+  font-size: 1.125rem;
+}
+
+.grid {
+  margin-top: 2rem;
+  gap: 2rem;
+  row-gap: 2rem;
+}
+
+.grid :global(.mantine-SimpleGrid-root) {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .grid :global(.mantine-SimpleGrid-root) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid :global(.mantine-SimpleGrid-root) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

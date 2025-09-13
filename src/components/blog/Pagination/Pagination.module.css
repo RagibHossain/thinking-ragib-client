@@ -1,0 +1,41 @@
+
+
+.center {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.group {
+  gap: 2rem;
+  align-items: center;
+}
+
+.infoText {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.pagination {
+  font-size: 1rem;
+  border-radius: 0.375rem;
+}
+
+.pagination :global(.mantine-Pagination-control) {
+  font-size: 1rem;
+  border-radius: 0.375rem;
+}
+
+.pagination :global(.mantine-Pagination-control[data-active]) {
+  background-color: #2E8A99 !important;
+  border-color: #2E8A99 !important;
+  color: white !important;
+}
+
+.pagination :global(.mantine-Pagination-control[data-active]:hover) {
+  background-color: #1F6E8C !important;
+}
+
+.pagination :global(.mantine-Pagination-control:hover:not([data-active])) {
+  background-color: #f8f9fa !important;
+  border-color: #84A7A1 !important;
+}
