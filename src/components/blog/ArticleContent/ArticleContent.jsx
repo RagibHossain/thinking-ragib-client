@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Text, Stack } from '@mantine/core';
-import classes from './BlogPostContent.module.css';
+import classes from './ArticleContent.module.css';
 
-const BlogPostContent = ({ content }) => {
+const ArticleContent = ({ content }) => {
   // Split content into paragraphs for better formatting
   const paragraphs = content ? content.split('\n\n') : [];
 
@@ -22,4 +22,5 @@ const BlogPostContent = ({ content }) => {
   );
 };
 
-export default BlogPostContent;
+export default ArticleContent;
+

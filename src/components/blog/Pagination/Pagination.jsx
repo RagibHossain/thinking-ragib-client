@@ -7,18 +7,24 @@ const Pagination = ({
   totalPages = 1, 
   onPageChange = () => {},
   totalPosts = 0,
-  postsPerPage = 9
+  postsPerPage = 9,
+  totalArticles = 0,
+  articlesPerPage = 9
 }) => {
   if (totalPages <= 1) return null;
 
-  const startPost = (currentPage - 1) * postsPerPage + 1;
-  const endPost = Math.min(currentPage * postsPerPage, totalPosts);
+  // Support both old (posts) and new (articles) prop names for backward compatibility
+  const total = totalArticles || totalPosts;
+  const perPage = articlesPerPage || postsPerPage;
+
+  const startArticle = (currentPage - 1) * perPage + 1;
+  const endArticle = Math.min(currentPage * perPage, total);
 
   return (
     <Center className={classes.center}>
       <Group className={classes.group}>
         <Text className={classes.infoText}>
-          Showing {startPost}-{endPost} of {totalPosts} posts
+          Showing {startArticle}-{endArticle} of {total} articles
         </Text>
         
         <MantinePagination

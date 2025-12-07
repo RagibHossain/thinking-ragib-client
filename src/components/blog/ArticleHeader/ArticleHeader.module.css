@@ -23,18 +23,6 @@
   height: 20px;
 }
 
-.tagsGroup {
-  gap: 0.5rem;
-}
-
-
-.tag {
-  background-color: #f8f9fa;
-  color: #0E2954;
-  border: 1px solid #e9ecef;
-  font-size: 1rem;
-}
-
 .title {
   font-size: 3rem;
   font-weight: 700;
@@ -77,3 +65,4 @@
   background-color: #e9ecef;
   margin: 2rem 0;
 }
+

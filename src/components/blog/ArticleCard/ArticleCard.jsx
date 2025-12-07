@@ -1,23 +1,25 @@
 import React from 'react';
-import { Card, Text, Group, Badge, Stack } from '@mantine/core';
+import { Card, Text, Group, Stack } from '@mantine/core';
 import { IconClock, IconCalendar } from '@tabler/icons-react';
-import classes from './PostCard.module.css';
+import { deriveExcerpt, calculateReadTime } from '../../../utils/articleHelpers';
+import classes from './ArticleCard.module.css';
 
-const PostCard = ({ 
+const ArticleCard = ({ 
   title, 
-  excerpt, 
-  publishDate, 
-  readTime, 
-  tags = [],
+  content, 
+  published_at, 
   onClick 
 }) => {
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('en-US', {
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   };
+
+  const excerpt = deriveExcerpt(content);
+  const readTime = calculateReadTime(content);
 
   return (
     <Card
@@ -25,20 +27,6 @@ const PostCard = ({
       onClick={onClick}
     >
       <Stack className={classes.cardContent}>
-        {/* Tags */}
-        {tags.length > 0 && (
-          <Group className={classes.tagsGroup}>
-            {tags.slice(0, 2).map((tag, index) => (
-              <Badge
-                key={index}
-                className={classes.tag}
-              >
-                {tag}
-              </Badge>
-            ))}
-          </Group>
-        )}
-
         {/* Title */}
         <Text className={classes.title}>
           {title}
@@ -54,7 +42,7 @@ const PostCard = ({
           <Group className={classes.metaGroup}>
             <IconCalendar className={classes.metaIcon} />
             <Text className={classes.metaText}>
-              {formatDate(publishDate)}
+              {formatDate(published_at)}
             </Text>
           </Group>
           
@@ -70,4 +58,5 @@ const PostCard = ({
   );
 };
 
-export default PostCard;
+export default ArticleCard;
+

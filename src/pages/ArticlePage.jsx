@@ -1,20 +1,17 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { MantineProvider, Box, Container, Text, Center } from '@mantine/core';
-import { BlogPostHeader, BlogPostContent } from '../components/blog';
-import { mockPosts } from '../data/mockPosts';
-import { blogContent } from '../data/blogContent';
+import { ArticleHeader, ArticleContent } from '../components/blog';
+import { mockArticles } from '../data/mockArticles';
 import { mantineTheme } from '../theme/colors';
 
-const BlogPostPage = () => {
-  const { id } = useParams();
-  const postId = parseInt(id);
+const ArticlePage = () => {
+  const { slug } = useParams();
   
-  // Find the post by ID
-  const post = mockPosts.find(p => p.id === postId);
-  const content = blogContent[postId];
+  // Find the article by slug
+  const article = mockArticles.find(a => a.slug === slug);
 
-  if (!post) {
+  if (!article) {
     return (
       <MantineProvider theme={mantineTheme}>
         <Box
@@ -27,7 +24,7 @@ const BlogPostPage = () => {
           <Container size="md">
             <Center style={{ minHeight: '400px' }}>
               <Text size="xl" color="dimmed" style={{ color: '#6c757d' }}>
-                Blog post not found
+                Article not found
               </Text>
             </Center>
           </Container>
@@ -44,18 +41,17 @@ const BlogPostPage = () => {
           backgroundColor: '#ffffff'
         }}
       >
-        <BlogPostHeader
-          title={post.title}
-          publishDate={post.publishDate}
-          readTime={post.readTime}
-          tags={post.tags}
-          excerpt={post.excerpt}
+        <ArticleHeader
+          title={article.title}
+          content={article.content}
+          published_at={article.published_at}
         />
         
-        <BlogPostContent content={content} />
+        <ArticleContent content={article.content} />
       </Box>
     </MantineProvider>
   );
 };
 
-export default BlogPostPage;
+export default ArticlePage;
+

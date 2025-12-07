@@ -1,25 +1,27 @@
 import React from 'react';
-import { Container, Title, Text, Group, Badge, Stack, ActionIcon } from '@mantine/core';
+import { Container, Title, Text, Group, Stack, ActionIcon } from '@mantine/core';
 import { IconCalendar, IconClock, IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
-import classes from './BlogPostHeader.module.css';
+import { deriveExcerpt, calculateReadTime } from '../../../utils/articleHelpers';
+import classes from './ArticleHeader.module.css';
 
-const BlogPostHeader = ({ 
+const ArticleHeader = ({ 
   title, 
-  publishDate, 
-  readTime, 
-  tags = [],
-  excerpt 
+  content,
+  published_at
 }) => {
   const navigate = useNavigate();
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('en-US', {
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   };
+
+  const excerpt = deriveExcerpt(content, 200);
+  const readTime = calculateReadTime(content);
 
   return (
     <Container className={classes.container}>
@@ -31,20 +33,6 @@ const BlogPostHeader = ({
         >
           <IconArrowLeft className={classes.backIcon} />
         </ActionIcon>
-
-        {/* Tags */}
-        {tags.length > 0 && (
-          <Group className={classes.tagsGroup}>
-            {tags.map((tag, index) => (
-              <Badge
-                key={index}
-                className={classes.tag}
-              >
-                {tag}
-              </Badge>
-            ))}
-          </Group>
-        )}
 
         {/* Title */}
         <Title className={classes.title}>
@@ -63,7 +51,7 @@ const BlogPostHeader = ({
           <Group className={classes.metaGroup}>
             <IconCalendar className={classes.metaIcon} />
             <Text className={classes.metaText}>
-              {formatDate(publishDate)}
+              {formatDate(published_at)}
             </Text>
           </Group>
           
@@ -82,4 +70,5 @@ const BlogPostHeader = ({
   );
 };
 
-export default BlogPostHeader;
+export default ArticleHeader;
+

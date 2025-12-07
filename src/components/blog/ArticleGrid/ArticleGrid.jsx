@@ -1,13 +1,13 @@
 import React from 'react';
 import { SimpleGrid, Container, Stack, Text, Center, Loader } from '@mantine/core';
-import PostCard from '../PostCard/PostCard';
-import classes from './PostGrid.module.css';
+import ArticleCard from '../ArticleCard/ArticleCard';
+import classes from './ArticleGrid.module.css';
 
-const PostGrid = ({ 
-  posts = [], 
+const ArticleGrid = ({ 
+  articles = [], 
   loading = false, 
-  onPostClick = () => {},
-  title = "Latest Posts"
+  onArticleClick = () => {},
+  title = "Latest Articles"
 }) => {
   if (loading) {
     return (
@@ -15,20 +15,20 @@ const PostGrid = ({
         <Center className={classes.loadingContainer}>
           <Stack className={classes.loadingStack}>
             <Loader className={classes.loader} />
-            <Text className={classes.loadingText}>Loading posts...</Text>
+            <Text className={classes.loadingText}>Loading articles...</Text>
           </Stack>
         </Center>
       </Container>
     );
   }
 
-  if (posts.length === 0) {
+  if (articles.length === 0) {
     return (
       <Container className={classes.container}>
         <Center className={classes.emptyContainer}>
           <Stack className={classes.emptyStack}>
             <Text className={classes.emptyTitle}>
-              No posts found
+              No articles found
             </Text>
             <Text className={classes.emptySubtitle}>
               Check back later for new content
@@ -52,17 +52,15 @@ const PostGrid = ({
           </Text>
         </Stack>
 
-        {/* Posts Grid */}
-        <SimpleGrid className={classes.grid}>
-          {posts.map((post, index) => (
-            <PostCard
-              key={post.id || index}
-              title={post.title}
-              excerpt={post.excerpt}
-              publishDate={post.publishDate}
-              readTime={post.readTime}
-              tags={post.tags}
-              onClick={() => onPostClick(post)}
+        {/* Articles Grid */}
+        <SimpleGrid className={classes.grid} cols={3}>
+          {articles.map((article, index) => (
+            <ArticleCard
+              key={article.id || index}
+              title={article.title}
+              content={article.content}
+              published_at={article.published_at}
+              onClick={() => onArticleClick(article)}
             />
           ))}
         </SimpleGrid>
@@ -71,4 +69,5 @@ const PostGrid = ({
   );
 };
 
-export default PostGrid;
+export default ArticleGrid;
+

@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { MantineProvider, Box } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-import { PostGrid, Pagination } from '../components/blog';
-import { mockPosts } from '../data/mockPosts';
+import { ArticleGrid, Pagination } from '../components/blog';
+import { mockArticles } from '../data/mockArticles';
 import { mantineTheme } from '../theme/colors';
 
 const HomePage = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [posts, setPosts] = useState([]);
+    const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     
-    const postsPerPage = 9;
-    const totalPages = Math.ceil(mockPosts.length / postsPerPage);
+    const articlesPerPage = 9;
+    const totalPages = Math.ceil(mockArticles.length / articlesPerPage);
 
     useEffect(() => {
         // Simulate loading
         setLoading(true);
         setTimeout(() => {
-            const startIndex = (currentPage - 1) * postsPerPage;
-            const endIndex = startIndex + postsPerPage;
-            setPosts(mockPosts.slice(startIndex, endIndex));
+            const startIndex = (currentPage - 1) * articlesPerPage;
+            const endIndex = startIndex + articlesPerPage;
+            setArticles(mockArticles.slice(startIndex, endIndex));
             setLoading(false);
         }, 500);
     }, [currentPage]);
 
     const navigate = useNavigate();
 
-    const handlePostClick = (post) => {
-        navigate(`/blog/${post.id}`);
+    const handleArticleClick = (article) => {
+        navigate(`/articles/${article.slug}`);
     };
 
     const handlePageChange = (page) => {
@@ -45,10 +45,10 @@ const HomePage = () => {
                     paddingBottom: '2rem'
                 }}
             >
-                <PostGrid
-                    posts={posts}
+                <ArticleGrid
+                    articles={articles}
                     loading={loading}
-                    onPostClick={handlePostClick}
+                    onArticleClick={handleArticleClick}
                     title="Thinking Ragib"
                 />
                 
@@ -56,8 +56,8 @@ const HomePage = () => {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     onPageChange={handlePageChange}
-                    totalPosts={mockPosts.length}
-                    postsPerPage={postsPerPage}
+                    totalArticles={mockArticles.length}
+                    articlesPerPage={articlesPerPage}
                 />
             </Box>
         </MantineProvider>

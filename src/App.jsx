@@ -1,9 +1,10 @@
 import '@mantine/core/styles.css';
 import { AppShell, Burger, Group, MantineProvider } from '@mantine/core';
-import classes from './App.module.css';
 import { BrowserRouter, Link, Router } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
 import { useDisclosure } from '@mantine/hooks';
+import Navbar from './components/common/Navbar';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <AuthProvider>
     <AppShell
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
@@ -20,27 +22,22 @@ function App() {
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
             <Group justify='flex-end' style={{ flex: 1}}>
-              <Group ml="xl" gap={40} visibleFrom="sm" className={classes.header}>
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-                <Link to="/contact">Contact</Link>
+              <Group ml="xl" visibleFrom="sm">
+                <Navbar />
               </Group>
             </Group>
         </Group>
       </AppShell.Header>
 
       <AppShell.Navbar py="md" px={4}>
-        <Group className={classes.nav}>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-        </Group>
+        <Navbar variant="vertical" />
       </AppShell.Navbar>
 
       <AppShell.Main>
         <AppRoutes />
       </AppShell.Main>
     </AppShell>
+    </AuthProvider>
     </BrowserRouter>
     </>
   )
